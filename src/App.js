@@ -3,22 +3,26 @@ import './App.css';
 import DefaultList from './components/DefaultList';
 import Form from './components/Form';
 import Header from './components/Header';
-import ListItem from './components/ListItem';
+import RenderList from './components/RenderList';
 
 
 function App() {
 
   const [shoppingList, setShoppingList] = useState(DefaultList);
 
-  function AddItem(newItem) {
+  function addItem(newItem) {
     setShoppingList([newItem, ...shoppingList]);
   }
+
+  function removeItem(deletedItem) {
+    setShoppingList(shoppingList.filter((item) => item.id !== deletedItem));
+    }
 
   return (
     <div className="App">
       <Header />
-      <Form AddItem={AddItem}/>
-      <ListItem list={shoppingList}/>
+      <Form addItem={addItem}/>
+      <RenderList list={shoppingList} remove={removeItem}/>
     </div>
   );
 }
