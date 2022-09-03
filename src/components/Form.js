@@ -1,13 +1,13 @@
 import { nanoid } from "nanoid";
 
-export default function Form({AddItem}) {
+export default function Form({addItem}) {
 
-function ButtonClick(event) {
+function buttonClick(event) {
     event.preventDefault();
     const form = event.target;
     const textInput = form.input.value;
     const newItem = {name: textInput, id: nanoid(), isChecked: false};
-    AddItem(newItem);
+    addItem(newItem);
     form.reset();
     form.input.focus();
 }
@@ -15,7 +15,7 @@ function ButtonClick(event) {
 
 
     return (
-        <form onSubmit={ButtonClick}>
+        <form onSubmit={buttonClick}>
           <label>
             <input id="input" type="text"/>
             <button type="submit">Add Item</button>

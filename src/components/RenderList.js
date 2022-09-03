@@ -3,9 +3,14 @@ import styled from "styled-components";
 
 
 
-  export default function RenderList({list}) {
+  export default function RenderList({list, remove}) {
 
     console.log(list);
+
+    function handleClick(event) {
+      const deletedItem = event.target.id;
+      remove(deletedItem);
+    }
 
     return (
         <ul>
@@ -16,7 +21,7 @@ import styled from "styled-components";
                           <input type="checkbox" id={item.id}></input>
                           {item.name}
                         </label>
-                        <Button>X</Button>
+                        <Button type="button" onClick={handleClick} id={item.id}>X</Button>
                     </Li>
                 )
                 })}

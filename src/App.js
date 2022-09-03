@@ -10,15 +10,19 @@ function App() {
 
   const [shoppingList, setShoppingList] = useState(DefaultList);
 
-  function AddItem(newItem) {
+  function addItem(newItem) {
     setShoppingList([newItem, ...shoppingList]);
   }
+
+  function removeItem(deletedItem) {
+    setShoppingList(shoppingList.filter((item) => item.id !== deletedItem));
+    }
 
   return (
     <div className="App">
       <Header />
-      <Form AddItem={AddItem}/>
-      <RenderList list={shoppingList}/>
+      <Form addItem={addItem}/>
+      <RenderList list={shoppingList} remove={removeItem}/>
     </div>
   );
 }
