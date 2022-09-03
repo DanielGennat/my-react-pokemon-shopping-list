@@ -4,9 +4,12 @@ export default function Form({AddItem}) {
 
 function ButtonClick(event) {
     event.preventDefault();
-    const textInput = event.target.input.value;
+    const form = event.target;
+    const textInput = form.input.value;
     const newItem = {name: textInput, id: nanoid(), isChecked: false};
     AddItem(newItem);
+    form.reset();
+    form.input.focus();
 }
 
 
