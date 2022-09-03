@@ -3,13 +3,20 @@ import styled from "styled-components";
 
 
 
-  export default function RenderList({list, remove}) {
+  export default function RenderList({list, remove, toggleItem}) {
 
     console.log(list);
+
+    //const [isDone, setIsDone] = useState(false);
 
     function handleClick(event) {
       const deletedItem = event.target.id;
       remove(deletedItem);
+    }
+
+    function handleChange(event) {
+      const changedItem = event.target.id;
+      toggleItem(changedItem);
     }
 
     return (
@@ -17,10 +24,10 @@ import styled from "styled-components";
             {list.map((item) => {
                 return (
                     <Li key={item.id}>
-                        <label htmlFor={item.id}>
-                          <input type="checkbox" id={item.id}></input>
+                        <Label htmlFor={item.id} isDone={item.isDone}>
+                          <input type="checkbox" id={item.id} onChange={handleChange}></input>
                           {item.name}
-                        </label>
+                        </Label>
                         <Button type="button" onClick={handleClick} id={item.id}>X</Button>
                     </Li>
                 )
@@ -35,6 +42,10 @@ import styled from "styled-components";
     grid-template-columns: 120px 140px;
     justify-content: center;
     justify-items: start;
+    `;
+    
+    const Label = styled.label`
+    text-decoration: ${prop => prop.isDone ? "line-through" : "none"};              
   `;
 
   const Button = styled.button`
