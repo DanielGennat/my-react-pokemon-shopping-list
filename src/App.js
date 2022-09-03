@@ -3,7 +3,7 @@ import './App.css';
 import DefaultList from './components/DefaultList';
 import Form from './components/Form';
 import Header from './components/Header';
-import ListItem from './components/ListItem';
+import RenderList from './components/RenderList';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Header />
       <Form AddItem={AddItem}/>
-      <ListItem list={shoppingList}/>
+      <RenderList list={shoppingList}/>
     </div>
   );
 }
