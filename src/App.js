@@ -5,6 +5,7 @@ import Form from './components/Form';
 import Header from './components/Header';
 import RenderList from './components/RenderList';
 
+console.clear();
 
 function App() {
 
@@ -18,11 +19,21 @@ function App() {
     setShoppingList(shoppingList.filter((item) => item.id !== deletedItem));
     }
 
+   function toggleItem(changedItem) {
+      const updatedList = shoppingList.map((item) => {
+        if (item.id === changedItem) {
+          item.isDone = !item.isDone;
+        }
+        return item;
+      });
+      setShoppingList(updatedList);
+    }
+
   return (
     <div className="App">
       <Header />
       <Form addItem={addItem}/>
-      <RenderList list={shoppingList} remove={removeItem}/>
+      <RenderList list={shoppingList} remove={removeItem} toggleItem={toggleItem}/>
     </div>
   );
 }
