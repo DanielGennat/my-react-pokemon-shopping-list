@@ -1,17 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-  export default function ListItem() {
-      const shoppingList = [
-          { name: "Potion", id: "1" },
-          { name: "Pokeball", id: "2" },
-          { name: "Para Healer", id: "3" },
-          { name: "Superball", id: "4" },
-          { name: "Masterball", id: "5" },
-        ];
+
+
+  export default function ListItem({list}) {
+
+    console.log(list);
 
     return (
         <ul>
-            {shoppingList.map((item) => {
+            {list.map((item) => {
                 return (
                     <Li key={item.id}>
                         <input type="checkbox" id={item.id}></input>
