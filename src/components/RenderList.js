@@ -12,8 +12,10 @@ import styled from "styled-components";
             {list.map((item) => {
                 return (
                     <Li key={item.id}>
-                        <input type="checkbox" id={item.id}></input>
-                        <label htmlFor={item.id}>{item.name}</label>
+                        <label htmlFor={item.id}>
+                          <input type="checkbox" id={item.id}></input>
+                          {item.name}
+                        </label>
                         <Button>X</Button>
                     </Li>
                 )
@@ -24,6 +26,10 @@ import styled from "styled-components";
 
   const Li = styled.li`
     list-style: none;
+    display: grid;
+    grid-template-columns: 120px 140px;
+    justify-content: center;
+    justify-items: start;
   `;
 
   const Button = styled.button`
